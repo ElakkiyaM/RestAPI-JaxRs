@@ -12,9 +12,9 @@ public class ProfileService {
 	private static Map<String, Profile> profiles = DatabaseClass.getProfiles();
 	
 	public ProfileService() {
-		profiles.put("Scorpion Scaffold", new Profile("SS", "Scorpion Scaffold", "Elakkiya", "M"));
-		profiles.put("Dancing Daffodil", new Profile("DD", "Dancing Daffodil", "Aadhvick Sai", "E"));
-		profiles.put("King Fisher", new Profile("KF", "King Fisher", "Nagenthiran", "M"));		
+		profiles.put("Scorpion Scaffold", new Profile(1l, "Scorpion Scaffold", "Elakkiya", "M"));
+		profiles.put("Dancing Daffodil", new Profile(2l, "Dancing Daffodil", "Aadhvick Sai", "E"));
+		profiles.put("King Fisher", new Profile(3l, "King Fisher", "Nagenthiran", "M"));		
 	}
 	
 	public List<Profile> getAllProfiles(){
@@ -26,6 +26,21 @@ public class ProfileService {
 	}
 	
 	public Profile addProfile(Profile profile) {
+		profile.setId(profiles.size()+1);
 		profiles.put(profile.getProfileName(), profile);
+		return profile;
+	}
+	
+	public Profile updateProfile(Profile profile) {
+		if(profile.getProfileName().isEmpty()) {
+			return null;
+		}
+		profiles.put(profile.getProfileName(), profile);
+		return profile;
+	}
+	
+	public String removeProfile(String profileName) {
+		profiles.remove(profileName);
+		return "The profile removed";
 	}
 }
