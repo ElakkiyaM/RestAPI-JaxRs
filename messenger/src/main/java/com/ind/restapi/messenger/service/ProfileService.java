@@ -9,15 +9,23 @@ import com.ind.restapi.messenger.model.Profile;
 
 public class ProfileService {
 
-	private static Map<Long, Profile> profiles = DatabaseClass.getProfiles();
+	private static Map<String, Profile> profiles = DatabaseClass.getProfiles();
 	
 	public ProfileService() {
-		profiles.put(1l, new Profile(1l, "Scorpion Scaffold", "Elakkiya", "M"));
-		profiles.put(2l, new Profile(2l, "Dancing Daffodil", "Aadhvick Sai", "E"));
-		profiles.put(3l, new Profile(3l, "King Fisher", "Nagenthiran", "M"));		
+		profiles.put("Scorpion Scaffold", new Profile("SS", "Scorpion Scaffold", "Elakkiya", "M"));
+		profiles.put("Dancing Daffodil", new Profile("DD", "Dancing Daffodil", "Aadhvick Sai", "E"));
+		profiles.put("King Fisher", new Profile("KF", "King Fisher", "Nagenthiran", "M"));		
 	}
 	
 	public List<Profile> getAllProfiles(){
 		return new ArrayList<Profile>(profiles.values());
+	}
+	
+	public Profile getProfile(String profileName) {
+		return profiles.get(profileName);
+	}
+	
+	public Profile addProfile(Profile profile) {
+		profiles.put(profile.getProfileName(), profile);
 	}
 }

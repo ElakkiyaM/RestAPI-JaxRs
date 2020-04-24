@@ -41,7 +41,7 @@ public class MessageService {
 		return message;
 	}
 	
-	public Message removeMEssage(Long msgId) {
+	public Message removeMessage(Long msgId) {
 		return messages.remove(msgId);
 	}
 }
