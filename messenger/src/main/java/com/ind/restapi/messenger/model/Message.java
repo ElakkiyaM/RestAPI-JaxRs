@@ -17,7 +17,7 @@ public class Message {
 		
 	}
 
-	public Message(long id, String message, String author) {
+	public Message(long id, String message, String author, Date created) {
 		super();
 		this.id = id;
 		this.message = message;
